@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>book list</title>
+</head>
+<body>
+
+<form role="form" th:action="@{/book/find/list/all}" method="get">
+    <button type="submit">back</button>
+</form>
+
+<form role="form" th:action="@{/book/update}" th:object="${book}" method="post">
+    <input type="hidden" name="id" th:value="${id}" />
+    <table border="1">
+        <tr>
+            <td>name</td><td><input type="text" name="name" th:value=${name}></td>
+        </tr>
+        <tr>
+            <td>author</td><td><input type="text" name="author" th:value=${author}></td>
+        </tr>
+        <tr>
+            <td>description</td><td><input type="text" name="description" th:value=${description}></td>
+        </tr>
+        <tr>
+            <td>delete?</td><td><input type="checkbox" name="delFlg" th:checked="${delFlg == 1}" th:value="1"></input></td>
+        </tr>
+    </table>
+    <button type="submit">ok</button>
+</form>
+
+</body>
+</html>

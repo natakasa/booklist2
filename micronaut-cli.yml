@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: booklist2
+---
+testFramework: kotlintest
+sourceLanguage: kotlin

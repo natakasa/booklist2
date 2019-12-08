@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>book list</title>
+</head>
+<body>
+
+<form role="form" th:action="@{/book/find/list}" method="get">
+    <input type="text" name="namepart" />
+    <button type="submit">search book</button>
+</form>
+
+<table border="1">
+<tr><th>name</th><th>author</th><th>description</th><th></th></tr>
+<tr th:each="item : ${book}">
+    <td th:text="${item.name}"></td>
+    <td th:text="${item.author}"></td>
+    <td th:text="${item.description}"></td>
+    <td>
+        <form role="form" th:action="@{/book/find}" method="get">
+            <input type="hidden" name="id" th:value="${item.id}" />
+            <button type="submit">edit</button>
+        </form>
+    </td>
+</tr>
+</table>
+
+<form role="form" th:action="@{/book/find}" method="get">
+    <input type="hidden" name="id" value=0 />
+    <button type="submit">add new book</button>
+</form>
+
+</body>
+</html>
