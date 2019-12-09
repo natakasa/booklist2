@@ -23,7 +23,10 @@
             <td>description</td><td><input type="text" name="description" th:value=${description}></td>
         </tr>
         <tr>
-            <td>delete?</td><td><input type="checkbox" name="delFlg" th:checked="${delFlg == 1}" th:value="1"></input></td>
+            <td>delete</td>
+            <td>
+                <input type="checkbox" name="delFlg" th:checked="${delFlg == 1}" th:value=1></input>
+            </td>
         </tr>
     </table>
     <button type="submit">ok</button>

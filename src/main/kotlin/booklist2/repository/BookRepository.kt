@@ -99,7 +99,7 @@ class BookRepository {
                     "update t_book " +
                     "set name = $1, author = $2, description = $3, del_flg = $4, updated_at = CURRENT_TIMESTAMP " +
                     "where id = $5",
-                    Tuple.of(book.name, book.author, book.description, book.delFlg, book.id)).flatMap { ret ->
+                    Tuple.of(book.name, book.author, book.description, if(book.delFlg==null) 0 else 1, book.id)).flatMap { ret ->
                 client.rxPreparedQuery("" +
                         "SELECT * FROM t_book " +
                         "where id = $1",
