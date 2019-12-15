@@ -2,17 +2,30 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
     <title>book list</title>
 </head>
 <body>
 
-<form role="form" th:action="@{/book/find/list}" method="get">
-    <input type="text" name="namepart" />
-    <button type="submit">search book</button>
-</form>
+<p class="lead text-center">book list.</p>
 
-<table border="1">
-<tr><th>name</th><th>author</th><th>description</th><th></th></tr>
+<div class="container">
+
+    <form role="form" th:action="@{/book/find/list}" method="get">
+        <div class="form-inline">
+        <input type="text" name="namepart" class="form-control" placeholder="title"/>
+        <button type="submit" class="btn btn-default">search book title</button>
+        </div>
+    </form>
+
+    <br>
+
+    <table class="table table-striped table-hover">
+<tr><th>title</th><th>author</th><th>description</th><th></th></tr>
 <tr th:each="item : ${book}">
     <td th:text="${item.name}"></td>
     <td th:text="${item.author}"></td>
@@ -20,7 +33,7 @@
     <td>
         <form role="form" th:action="@{/book/find}" method="get">
             <input type="hidden" name="id" th:value="${item.id}" />
-            <button type="submit">edit</button>
+            <button type="submit" class="btn btn-default">edit</button>
         </form>
     </td>
 </tr>
@@ -28,8 +41,10 @@
 
 <form role="form" th:action="@{/book/find}" method="get">
     <input type="hidden" name="id" value=0 />
-    <button type="submit">add new book</button>
+    <button type="submit" class="btn btn-default">add new book</button>
 </form>
+
+</div>
 
 </body>
 </html>
