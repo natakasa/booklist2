@@ -40,6 +40,16 @@ dependencies {
     testImplementation "io.micronaut.test:micronaut-test-kotlintest"
     testImplementation "io.mockk:mockk:1.9.3"
     runtime 'org.thymeleaf:thymeleaf:3.0.11.RELEASE'
+
+    testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
+    testImplementation ("org.spekframework.spek2:spek-dsl-jvm:$spekVersion") {
+        exclude group: 'org.jetbrains.kotlin'
+    }
+    testRuntimeOnly ("org.spekframework.spek2:spek-runner-junit5:$spekVersion") {
+        exclude group: 'org.junit.platform'
+        exclude group: 'org.jetbrains.kotlin'
+    }
+    testRuntimeOnly "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 }
 
 test.classpath += configurations.developmentOnly

@@ -24,11 +24,6 @@ class BookController {
     @View("update")
     fun find(@QueryValue id : Int) = HttpResponse.ok(BookRepository().find(id))
 
-    // todo フロントからformで/find/idと渡すことができればこっちを使いたい
-    @Get("/find/{id}")
-    @View("update")
-    fun find2(id : Int) = HttpResponse.ok(BookRepository().find(id))
-
     @Get("/find/list/all")
     @View("find")
     fun findList() = HttpResponse.ok(CollectionUtils.mapOf("book",BookRepository().findList("")))

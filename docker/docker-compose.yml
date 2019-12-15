@@ -1,0 +1,9 @@
+db:
+  image: postgres:12.1-alpine
+  ports:
+    - "5432:5432"
+  environment:
+    - POSTGRES_PASSWORD=admin
+    - POSTGRES_DB=booklist
+  volumes:
+    - "./initdb.d:/docker-entrypoint-initdb.d"
